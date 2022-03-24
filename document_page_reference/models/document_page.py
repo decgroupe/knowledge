@@ -113,3 +113,7 @@ class DocumentPage(models.Model):
 
     def get_raw_content(self):
         return self.with_context(raw_reference=True).get_content()
+
+    @api.multi
+    def get_formview_id(self, access_uid=None):
+        return self.env.ref('document_page.view_wiki_form').id
